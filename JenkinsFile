@@ -4,19 +4,14 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                bat 'git clone '
+                git url: 'https://github.com/RagehM/Jenkins-Test.git', branch: 'master'
             }
         }
-        stage('Test') {
+        stage('Build & Test') {
             steps {
-                echo 'Testing...'
-                // Add your test commands here
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Add your deployment commands here
+                dir('Jenkins-Test') {
+                    bat 'mvn clean package'
+                }
             }
         }
     }
