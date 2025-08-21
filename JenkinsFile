@@ -9,9 +9,7 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                dir('Jenkins-Test') {
-                    bat 'mvn clean package'
-                }
+                bat 'mvn clean package'
             }
         }
     }
